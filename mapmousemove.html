@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>	
+	<style type="text/css">
+		p#coord {
+			font: sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<img id="map" src="map.jpg">
+	<p id="coord">Move pointer on the map to find your coordinates!! </p>
+	<script type="text/javascript">
+		function init() {
+			var mapElement = document.getElementById("map");
+			mapElement.onmousemove = showCoordinates;
+		}
+
+		function showCoordinates(eventObj) {
+			var mapMsg = document.getElementById("coord");
+			mapMsg.innerHTML = "Map coordinates are : " + eventObj.clientX + "," + eventObj.clientY;
+		}
+		window.onload = init;
+	</script>
+</body>
+</html>
