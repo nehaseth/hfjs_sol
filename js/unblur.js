@@ -9,12 +9,12 @@ function init() {
 function unblur(eventObj) {
 	var imageElement = eventObj.target;
 	var name = imageElement.id;
-	imageElement.setAttribute("src", name + ".jpg");
+	imageElement.setAttribute("src", "../images/" + name + ".jpg");
 	setTimeout(reblur, 2000, imageElement);
 }
 
 function reblur(imageElement) {
-	var name = imageElement.id + "blur.jpg";
+	var name = "../images/" +  imageElement.id + "blur.jpg";
 	imageElement.setAttribute("src", name);
 }
 

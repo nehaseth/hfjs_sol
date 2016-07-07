@@ -1,8 +1,9 @@
-var passengers = [{name:"Joe", age: 43, paid: true},  {name:"Jack", age: 32, paid:true}, {name:"John", age: 54, paid: false}, {name:"Jason", age: 23, paid: true}];
+var passengers = [{name:"Joe", age: 43, paid: true, ticket: "firstClass"},  {name:"Jack", age: 32, paid:true, ticket: "secondClass"}, {name:"John", age: 54, paid: false, ticket: "firstClass"}, {name:"Jason", age: 23, paid: true, ticket:"secondClass"}];
 
 function init() {
 	alert("Flight checking begins");
 	setTimeout(checkFlightPassengers, 5000, passengers);
+	setTimeout(servePassengers, 20000, passengers);
 }
 
 function checkFlightPassengers(passengers) {
@@ -35,6 +36,35 @@ function allOnFlyListTest(passenger) {
 	if(passenger.name == "Jason") {
 		return false;
 	}
+}
+
+function servePassengers(passengers) {
+	for(var i=0; i<passengers.length; i++) {
+		serveCustomer(passengers[i]);
+	}
+}
+
+function serveCustomer(passenger) {
+	var takeOrderByTicket = createOrderFunc(passenger);
+	takeOrderByTicket();
+	// do something else
+	takeOrderByTicket();
+}
+
+function createOrderFunc(passenger) {
+	var orderFunc;
+	if(passenger.ticket == "firstClass") {
+		orderFunc = function() {
+			alert("Would u prefer ABC or ASDF? ");
+		}
+	}
+	else {
+		orderFunc = function() {
+			alert("Would u prefer RQEQ or GFDS");
+		}
+	}
+
+	return orderFunc;
 }
 
 window.onload = init;
